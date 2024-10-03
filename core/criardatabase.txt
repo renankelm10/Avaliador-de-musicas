@@ -1,0 +1,26 @@
+--codigo para criar o Banco que executa todo esse codigo...
+ 
+CREATE DATABASE avaliador_musicas; 
+USE avaliador_musicas; 
+-- Tabela para armazenar as músicas 
+CREATE TABLE musicas ( 
+    id INT AUTO_INCREMENT PRIMARY KEY, 
+    titulo VARCHAR(255) NOT NULL, 
+    artista VARCHAR(255) NOT NULL, 
+    genero VARCHAR(100), 
+    url_musica VARCHAR(255),  -- Link para a música (YouTube, Spotify, etc.) 
+    media_avaliacao DECIMAL(3, 2) DEFAULT 0  -- Média das avaliações 
+); 
+-- Tabela para armazenar as avaliações das músicas 
+CREATE TABLE avaliacoes ( 
+    id INT AUTO_INCREMENT PRIMARY KEY, 
+    musica_id INT, 
+    nota INT CHECK(nota >= 1 AND nota <= 5), 
+    FOREIGN KEY (musica_id) REFERENCES musicas(id) 
+); 
+CREATE TABLE `users` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(255) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`id`)
+);
